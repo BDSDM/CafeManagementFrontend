@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
 import { MatDialogRef } from '@angular/material/dialog';
+import { GlobalConstants } from '../global-constants';
 
 @Component({
   selector: 'app-signup',
@@ -24,8 +25,17 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
     this.signupForm = this.formBuilder.group({
       name: [null, [Validators.required]],
-      email: [null, [Validators.required]],
-      contactNumber: [null, [Validators.required]],
+      email: [
+        null,
+        [Validators.required, Validators.pattern(GlobalConstants.emailRegex)],
+      ],
+      contactNumber: [
+        null,
+        [
+          Validators.required,
+          Validators.pattern(GlobalConstants.contactNumberRegex),
+        ],
+      ],
       password: [null, [Validators.required]],
       confirmPassword: [null, [Validators.required]],
     });
