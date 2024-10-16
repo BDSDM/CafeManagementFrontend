@@ -2,6 +2,7 @@ header {
   background-color: #f4a261; /* Couleur orange claire */
   color: #333; /* Texte foncé */
   padding: 20px;
+  width: 100%;
 }
 
 footer {

@@ -5,9 +5,16 @@
     Cafe Management System
   </a>
   <ul style="float: right">
-    <li>
-      <a (click)="handleSignupAction()">Signup</a>
-    </li>
+    <a
+      style="padding-right: 10px; cursor: pointer"
+      (click)="handleSignupAction()"
+      >Signup</a
+    >
+    <a
+      style="cursor: pointer; padding-right: 30px"
+      (click)="handleLoginAction()"
+      >Login</a
+    >
   </ul>
 </header>
 
@@ -27,3 +34,4 @@
 >
   <p>All rights reserved Don</p>
 </footer>
+<router-outlet></router-outlet>

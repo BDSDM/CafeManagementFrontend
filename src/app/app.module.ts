@@ -12,11 +12,13 @@ import { SignupComponent } from './signup/signup.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { LoginComponent } from './login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent, // Assurez-vous que le composant Home est bien déclaré
     SignupComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

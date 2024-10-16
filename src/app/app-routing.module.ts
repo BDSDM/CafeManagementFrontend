@@ -3,9 +3,19 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent }, // Rend le composant Home pour la racine '/'
-  { path: 'home', component: HomeComponent }, // Route explicite pour /home
-  { path: '**', redirectTo: '' }, // Redirige toutes les autres routes vers la racine
+  {
+    path: 'home',
+    component: HomeComponent, // La page Home
+    children: [
+      {
+        path: 'dashboard', // Sous-route de Home
+        loadChildren: () =>
+          import('./dashboard/dashboard.module').then((m) => m.DashboardModule), // Charge DashboardModule
+      },
+    ],
+  },
+  { path: '', redirectTo: 'home', pathMatch: 'full' }, // Redirige vers home par défaut
+  { path: '**', redirectTo: 'home' }, // Redirige toutes les routes inconnues vers home
 ];
 
 @NgModule({

@@ -109,7 +109,7 @@
         <mat-label>Confirm Password</mat-label>
         <input
           matInput
-          [type]="passwordVisible ? 'text' : 'password'"
+          [type]="confirmPasswordVisible ? 'text' : 'password'"
           formControlName="confirmPassword"
           required
           autocomplete="new-password"
@@ -118,10 +118,10 @@
           mat-icon-button
           matSuffix
           type="button"
-          (click)="togglePasswordVisibility()"
+          (click)="toggleConfirmPasswordVisibility()"
         >
           <mat-icon>{{
-            passwordVisible ? "visibility_off" : "visibility"
+            confirmPasswordVisible ? "visibility_off" : "visibility"
           }}</mat-icon>
         </button>
         <mat-error
