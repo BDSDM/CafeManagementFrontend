@@ -15,6 +15,7 @@ export class SignupComponent implements OnInit {
   confirmPassword = true;
   signupForm: any = FormGroup;
   passwordVisible: boolean = false;
+  confirmPasswordVisible: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -70,5 +71,8 @@ export class SignupComponent implements OnInit {
   }
   togglePasswordVisibility() {
     this.passwordVisible = !this.passwordVisible; // Inverser l'état de visibilité
+  }
+  toggleConfirmPasswordVisibility() {
+    this.confirmPasswordVisible = !this.confirmPasswordVisible; // Inverser l'état de visibilité
   }
 }
