@@ -1,0 +1,24 @@
+p,
+h1 {
+  color: red;
+  position: relative; /* Ajout de position pour que z-index soit pris en compte */
+  z-index: 10000;
+}
+/* Styles pour la div de contenu */
+/* Styles pour la div de contenu */
+/* Styles pour la div de contenu */
+/* Styles pour la div de contenu */
+/* Styles pour la div de contenu */
+.content {
+  min-height: calc(
+    100vh - 80px
+  ); /* Hauteur totale de la fenêtre moins la hauteur du header (80px) */
+  flex: 1; /* Occuper tout l'espace restant */
+  padding: 20px; /* Espacement interne */
+  background-color: #554c4c; /* Couleur de fond pour le contenu */
+  margin-left: 250px; /* Largeur de la sidebar */
+  margin-top: -380px; /* Déplacer la div 100px plus haut */
+  padding-bottom: 100px; /* Ajouter du padding en bas pour éviter le chevauchement avec le footer */
+  overflow-y: auto; /* Permettre le défilement vertical si nécessaire */
+  box-sizing: border-box; /* Inclure le padding dans la hauteur totale */
+}

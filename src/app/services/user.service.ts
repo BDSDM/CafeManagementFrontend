@@ -20,4 +20,7 @@ export class UserService {
       headers: new HttpHeaders().set('Content-Type', 'application/json'), // Correction ici
     });
   }
+  getStoredUserName(): string {
+    return localStorage.getItem('name') || '';
+  }
 }

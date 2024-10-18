@@ -40,6 +40,24 @@ export class LoginComponent implements OnInit {
     this.userService.login(data).subscribe(
       (response: any) => {
         this.dialogRef.close();
+        console.log('réponse' + response);
+        console.log('Réponse:', JSON.stringify(response, null, 2));
+
+        console.log('Token' + response.token);
+        console.log('Rôle' + response.role);
+
+        const token = response.token; // Récupère le token
+        const payload = token.split('.')[1]; // Prend la seconde partie du token
+        const decodedPayload = JSON.parse(atob(payload)); // Décode la partie payload
+
+        console.log('Payload décodé:', decodedPayload); // Affiche le payload
+        console.log('Rôle:', decodedPayload.role); // Vérifie si le rôle est présent
+        const userName = decodedPayload.name;
+        console.log("Nom de l'utilisateur:", userName);
+
+        // Stocker le nom dans le localStorage ou via un service
+        localStorage.setItem('name', userName); // Stocker le nom de l'utilisateur
+
         localStorage.setItem('token', response.token);
         this.router.navigate(['/home/dashboard']);
       },
