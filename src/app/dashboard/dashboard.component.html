@@ -1,4 +1,11 @@
-<div class="center-container">
-  <p>bonjour</p>
-  <button (click)="logout()">logout</button>
+<!-- Sidebar -->
+<div class="sidebar">
+  <h1>Dashboard</h1>
+  <h2>Bienvenue sur le Dashboard, {{ username }} !</h2>
+  <a routerLink="/home/dashboard/usersmanagement">Gestion des utilisateurs</a>
+
+  <div class="logout">
+    <button (click)="logout()">Logout</button>
+  </div>
 </div>
+<router-outlet></router-outlet>
