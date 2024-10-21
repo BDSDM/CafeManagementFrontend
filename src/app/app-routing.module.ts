@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { AdminGuard } from './admin.guard';
 import { UserGuard } from './user.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { HomeGuard } from './home.guard';
 
 const routes: Routes = [
   {
