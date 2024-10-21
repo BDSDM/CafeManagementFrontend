@@ -20,7 +20,9 @@
 
 <!-- Main Content (Empty for now, can add later) -->
 <main style="min-height: 300px; padding: 20px; text-align: center">
-  <p>Bienvenue sur le système de gestion du café.</p>
+  <p *ngIf="!isUserAuthenticated()">
+    Bienvenue sur le système de gestion du café.
+  </p>
 </main>
 
 <!-- Footer -->
