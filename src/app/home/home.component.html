@@ -8,13 +8,15 @@
     <a
       style="padding-right: 10px; cursor: pointer"
       (click)="handleSignupAction()"
+      *ngIf="!isUserAuthenticated()"
       >Signup</a
     >
     <a
       style="cursor: pointer; padding-right: 30px"
       (click)="handleLoginAction()"
-      >Login</a
-    >
+      *ngIf="!isUserAuthenticated()"
+      >Login
+    </a>
   </ul>
 </header>
 

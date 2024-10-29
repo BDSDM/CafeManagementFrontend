@@ -7,12 +7,19 @@ import {
   Router,
 } from '@angular/router';
 import { AuthService } from './services/auth.service';
+import { UserService } from './services/user.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AdminGuard implements CanActivate {
-  constructor(private authService: AuthService, private router: Router) {}
+  accessAuthorization!: boolean;
+
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private userService: UserService
+  ) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -22,11 +29,18 @@ export class AdminGuard implements CanActivate {
     const isAuthenticated = this.authService.isAuthenticated();
 
     // Vérifie si l'utilisateur est authentifié et a le rôle 'admin'
-    if (isAuthenticated && role === 'admin') {
+    if (role === 'admin') {
+      this.accessAuthorization = false;
+
+      this.userService.setAccessAuthorization(this.accessAuthorization);
       return true;
     }
 
     // Redirige vers une autre route si l'utilisateur n'est pas autorisé
+    this.accessAuthorization = true;
+
+    this.userService.setAccessAuthorization(this.accessAuthorization);
+
     this.router.navigate(['/home/dashboard']);
     return false;
   }

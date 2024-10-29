@@ -9,6 +9,10 @@ h1 {
 /* Styles pour la div de contenu */
 /* Styles pour la div de contenu */
 /* Styles pour la div de contenu */
+.user-table-container {
+  max-height: 250px;
+  overflow-y: auto !important;
+}
 .content {
   min-height: calc(
     100vh - 80px

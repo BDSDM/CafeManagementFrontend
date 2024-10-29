@@ -3,10 +3,23 @@
   <h1>Dashboard</h1>
   <h2>Bienvenue sur le Dashboard, {{ username }} !</h2>
   <a
+    (click)="openPopup($event)"
     routerLink="/home/dashboard/usersmanagement"
     style="color: white; padding-bottom: 10px"
     >Gestion des utilisateurs</a
   >
+  <div id="myModal" class="modal" *ngIf="showPopup">
+    <div class="modal-content">
+      <span class="close" (click)="closePopup()">&times;</span>
+      <h2 class="modal-title">Accès restreint</h2>
+      <p class="modal-message">
+        Cet accès est réservé uniquement aux utilisateurs ayant le rôle
+        <b>admin</b>.
+      </p>
+      <button class="modal-button" (click)="closePopup()">OK</button>
+    </div>
+  </div>
+
   <div [style.background-color]="currentColor" class="color-container">
     <p>Choisissez une couleur de fond :</p>
     <button
