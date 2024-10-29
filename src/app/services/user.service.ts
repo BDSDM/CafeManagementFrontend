@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -10,8 +10,31 @@ export class UserService {
   private url = 'http://localhost:8081/user/signUp';
   private urlLogin = 'http://localhost:8081/user/login';
   private apiUrl = 'http://localhost:8081/api';
+  private apiUrlU = 'http://localhost:8081/user/all';
+  private baseUrl = 'http://localhost:8081/user/users';
+  private apiUrlStatus = 'http://localhost:8081/user';
 
   constructor(private httpClient: HttpClient, private router: Router) {}
+
+  private accessAuthorizationSource = new BehaviorSubject<boolean>(false);
+  accessAuthorization$ = this.accessAuthorizationSource.asObservable();
+
+  setAccessAuthorization(value: boolean) {
+    this.accessAuthorizationSource.next(value);
+  }
+  updateUserStatus(userId: number, status: string): Observable<void> {
+    return this.httpClient.put<void>(
+      `${this.apiUrlStatus}/update-status/${userId}`,
+      { status }
+    );
+  }
+
+  deleteUserById(id: number): Observable<void> {
+    return this.httpClient.delete<void>(`${this.baseUrl}/${id}`);
+  }
+  getAllUsers(): Observable<any> {
+    return this.httpClient.get<any>(`${this.apiUrlU}`);
+  }
 
   signup(data: any) {
     return this.httpClient.post(this.url, data, {
@@ -49,7 +72,8 @@ export class UserService {
 
   logout() {
     //localStorage.removeItem('token');
-    localStorage.clear();
+
+    localStorage.removeItem('token');
     this.router.navigate(['/home']);
   }
   setColorPreference(color: string): Observable<any> {

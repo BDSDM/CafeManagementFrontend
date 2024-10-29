@@ -17,13 +17,18 @@ export class HomeGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean {
-    // Vérifiez si l'utilisateur est authentifié
-    if (!this.authService.isAuthenticated()) {
-      return true; // Autorise l'accès
+    // Si l'utilisateur est authentifié
+    if (this.authService.isAuthenticated()) {
+      // Empêcher la boucle en ne redirigeant pas si l'utilisateur est déjà sur /dashboard
+      if (state.url === '/home/dashboard') {
+        return true; // Autoriser l'accès au dashboard
+      }
+
+      // Rediriger les utilisateurs authentifiés vers le dashboard
+      this.router.navigate(['/home/dashboard']);
+      return false; // Bloquer l'accès à la page actuelle
     }
 
-    // Redirige vers la page de connexion si non authentifié
-
-    return false; // Refuse l'accès
+    return true; // Autoriser l'accès si non authentifié (ex: accès à la page de login)
   }
 }

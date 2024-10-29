@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   loginForm: any = FormGroup;
   password = true;
   passwordVisible: boolean = false;
+  loginError: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -62,6 +63,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/home/dashboard']);
       },
       (error) => {
+        this.loginError = true;
         console.error('Login  error:', error);
       }
     );

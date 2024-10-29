@@ -35,7 +35,14 @@ export class TokenInterceptorService implements HttpInterceptor {
     // Passer la requête au handler suivant
     return next.handle(modifiedReq).pipe(
       catchError((error: HttpErrorResponse) => {
-        console.error('HTTP Error occurred:', error);
+        // Gérer les erreurs
+        if (error.status === 400) {
+          // Ne pas afficher d'erreur pour les identifiants invalides
+          return throwError(() => new Error('Identifiants invalides.'));
+        }
+
+        // Suppression de l'erreur du log de la console
+        // console.error('HTTP Error occurred:', error); // Commenté pour ne pas afficher d'erreur dans la console
 
         if (error.status === 401 || error.status === 403) {
           // Si non autorisé (token invalide ou expiré)
@@ -43,6 +50,7 @@ export class TokenInterceptorService implements HttpInterceptor {
           this.router.navigate(['/home']);
         }
 
+        // Retourne une erreur sans afficher dans la console
         const errorMessage = error.error?.message || error.message;
         return throwError(() => new Error(errorMessage));
       })

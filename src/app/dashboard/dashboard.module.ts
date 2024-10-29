@@ -11,7 +11,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [DashboardComponent],
+  declarations: [],
   imports: [CommonModule, RouterModule.forChild(routes)], // RouterModule.forChild pour les routes enfants
 })
 export class DashboardModule {}

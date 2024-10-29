@@ -63,6 +63,9 @@
           >
         </mat-error>
       </mat-form-field>
+      <div *ngIf="loginError">
+        <mat-error>Identifiant ou mot de passe incorrect.</mat-error>
+      </div>
     </div>
     <mat-dialog-actions align="end">
       <button
@@ -71,6 +74,7 @@
         type="submit"
         (click)="handleSubmit()"
         [disabled]="!(loginForm.valid && loginForm.dirty)"
+        style="margin-right: 10px"
       >
         <mat-icon>login</mat-icon> Login
       </button>
