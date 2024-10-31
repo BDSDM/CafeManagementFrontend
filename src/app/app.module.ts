@@ -22,6 +22,10 @@ import { UsersmanagementComponent } from './usersmanagement/usersmanagement.comp
 import { MatSlideToggleModule } from '@angular/material/slide-toggle'; // Import du Slide Toggle
 import { RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { UpdateComponent } from './update/update.component';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -31,6 +35,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     LoginComponent,
     UsersmanagementComponent,
     DashboardComponent,
+    UpdateComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +54,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MatCardModule,
     MatSlideToggleModule,
     RouterModule,
+    MatOptionModule,
+    MatSelectModule,
+    MatSnackBarModule,
   ],
   providers: [
     {

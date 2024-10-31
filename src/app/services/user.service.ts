@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { User } from '../user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -13,6 +14,7 @@ export class UserService {
   private apiUrlU = 'http://localhost:8081/user/all';
   private baseUrl = 'http://localhost:8081/user/users';
   private apiUrlStatus = 'http://localhost:8081/user';
+  private apiUrlUpdate = 'http://localhost:8081/user/users';
 
   constructor(private httpClient: HttpClient, private router: Router) {}
 
@@ -22,6 +24,31 @@ export class UserService {
   setAccessAuthorization(value: boolean) {
     this.accessAuthorizationSource.next(value);
   }
+  updateUser(
+    id: number, // Changez ici de string à number
+    user: {
+      name: string;
+      email: string;
+      contactNumber: string;
+      status: string;
+      role: string;
+    }
+  ): Observable<User> {
+    // Récupérer le token d'authentification
+    const token = localStorage.getItem('token'); // Ou la méthode appropriée pour votre application
+
+    // Créer les en-têtes avec le token
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    });
+
+    // Faire la requête PUT avec les en-têtes
+    return this.httpClient.put<User>(`${this.apiUrlUpdate}/${id}`, user, {
+      headers,
+    });
+  }
+
   updateUserStatus(userId: number, status: string): Observable<void> {
     return this.httpClient.put<void>(
       `${this.apiUrlStatus}/update-status/${userId}`,
