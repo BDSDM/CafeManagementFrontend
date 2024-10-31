@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { GlobalConstants } from '../global-constants';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-signup',
@@ -20,6 +21,7 @@ export class SignupComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
+    private snackBar: MatSnackBar,
     private userService: UserService,
     private dialogRef: MatDialogRef<SignupComponent>
   ) {}
@@ -63,6 +65,11 @@ export class SignupComponent implements OnInit {
     this.userService.signup(data).subscribe(
       (response: any) => {
         this.dialogRef.close();
+        this.snackBar.open('Utilisateur enregistré avec succès', 'Fermer', {
+          duration: 6000,
+          verticalPosition: 'top', // ou 'bottom'
+          horizontalPosition: 'center', // ou 'right', 'left'
+        });
       },
       (error) => {
         console.error('Registration error:', error);

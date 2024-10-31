@@ -17,6 +17,12 @@
       *ngIf="!isUserAuthenticated()"
       >Login
     </a>
+    <a
+      style="cursor: pointer; padding-right: 30px"
+      (click)="Logout()"
+      *ngIf="isUserAuthenticated()"
+      >Logout
+    </a>
   </ul>
 </header>
 
