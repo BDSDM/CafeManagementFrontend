@@ -26,6 +26,9 @@ import { UpdateComponent } from './update/update.component';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.component';
+import { ConfirmLogoutDialogComponent } from './confirm-logout-dialog/confirm-logout-dialog.component';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -36,6 +39,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     UsersmanagementComponent,
     DashboardComponent,
     UpdateComponent,
+    ConfirmDeleteComponent,
+    ConfirmLogoutDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,6 +62,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatOptionModule,
     MatSelectModule,
     MatSnackBarModule,
+    MatButtonModule,
   ],
   providers: [
     {

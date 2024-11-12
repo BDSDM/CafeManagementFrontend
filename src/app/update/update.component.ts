@@ -4,6 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { User, UserData } from '../user.model';
 import { UserService } from '../services/user.service';
 import { GlobalConstants } from '../global-constants';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-update-user',
@@ -15,6 +16,7 @@ export class UpdateComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
+    private snackBar: MatSnackBar,
     public dialogRef: MatDialogRef<UpdateComponent>,
     @Inject(MAT_DIALOG_DATA) public data: UserData
   ) {}
@@ -49,6 +51,11 @@ export class UpdateComponent implements OnInit {
       this.userService.updateUser(this.data.user.id, updatedData).subscribe(
         (response: User) => {
           this.dialogRef.close(response);
+          this.snackBar.open('Utilisateur mis à jour avec succès', 'Fermer', {
+            duration: 5000,
+            verticalPosition: 'top', // ou 'bottom'
+            horizontalPosition: 'center', // ou 'right', 'left'
+          });
         },
         (error) => {
           console.error(

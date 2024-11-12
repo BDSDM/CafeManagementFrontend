@@ -46,6 +46,7 @@ export class TokenInterceptorService implements HttpInterceptor {
 
         if (error.status === 401 || error.status === 403) {
           // Si non autorisé (token invalide ou expiré)
+          localStorage.removeItem('lastVisitedUrl');
           localStorage.removeItem('token');
           this.router.navigate(['/home']);
         }

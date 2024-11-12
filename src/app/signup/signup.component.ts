@@ -17,6 +17,7 @@ export class SignupComponent implements OnInit {
   signupForm: any = FormGroup;
   passwordVisible: boolean = false;
   confirmPasswordVisible: boolean = false;
+  SignUpError: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -28,10 +29,7 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
     this.signupForm = this.formBuilder.group({
       name: [null, [Validators.required]],
-      email: [
-        null,
-        [Validators.required, Validators.pattern(GlobalConstants.emailRegex)],
-      ],
+      email: [null, [Validators.required, Validators.email]],
       contactNumber: [
         null,
         [
@@ -66,12 +64,13 @@ export class SignupComponent implements OnInit {
       (response: any) => {
         this.dialogRef.close();
         this.snackBar.open('Utilisateur enregistré avec succès', 'Fermer', {
-          duration: 6000,
+          duration: 5000,
           verticalPosition: 'top', // ou 'bottom'
           horizontalPosition: 'center', // ou 'right', 'left'
         });
       },
       (error) => {
+        this.SignUpError = true;
         console.error('Registration error:', error);
       }
     );

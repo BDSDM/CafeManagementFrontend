@@ -20,3 +20,6 @@ mat-dialog-content {
   box-sizing: border-box;
   padding: 0 24px; /* Ajuster le padding pour éviter un débordement */
 }
+::-ms-reveal {
+  display: none;
+}
