@@ -15,7 +15,7 @@
   <form [formGroup]="updateForm" (ngSubmit)="handleUpdate()">
     <div fxFlex fxLayout="column" fxLayoutGap="16px">
       <!-- Name Field -->
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" style="margin-right: 10px">
         <mat-label>Name</mat-label>
         <input matInput formControlName="name" required autocomplete="off" />
         <mat-error
@@ -31,7 +31,7 @@
       </mat-form-field>
 
       <!-- Email Field -->
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" style="margin-right: 10px">
         <mat-label>Email</mat-label>
         <input matInput formControlName="email" required autocomplete="off" />
         <mat-error
@@ -50,7 +50,7 @@
       </mat-form-field>
 
       <!-- Contact Number Field -->
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" style="margin-right: 10px">
         <mat-label>Contact Number</mat-label>
         <input
           matInput
@@ -75,7 +75,7 @@
       </mat-form-field>
 
       <!-- Status Field -->
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" style="margin-right: 10px">
         <mat-label>Status</mat-label>
         <mat-select formControlName="status" required>
           <mat-option value="true">Active</mat-option>

@@ -5,6 +5,7 @@ import { LoginComponent } from '../login/login.component';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
+import { ConfirmLogoutDialogComponent } from '../confirm-logout-dialog/confirm-logout-dialog.component';
 
 @Component({
   selector: 'app-home',
@@ -38,9 +39,19 @@ export class HomeComponent implements OnInit {
     return this.authService.isAuthenticated();
   }
   Logout() {
-    this.accessAuthorization = false;
+    const dialogRef = this.dialog.open(ConfirmLogoutDialogComponent, {
+      width: '400px',
+      disableClose: true,
+    });
 
-    this.userService.setAccessAuthorization(this.accessAuthorization);
-    this.userService.logout();
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        // Si l'utilisateur confirme la déconnexion
+        this.accessAuthorization = false;
+        this.userService.setAccessAuthorization(this.accessAuthorization);
+        this.userService.logout();
+        localStorage.removeItem('lastVisitedUrl'); // Efface l'URL lors de la déconnexion
+      }
+    });
   }
 }

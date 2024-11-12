@@ -42,7 +42,7 @@
           <span *ngIf="signupForm.controls.email.errors?.required"
             >This field is mandatory</span
           >
-          <span *ngIf="signupForm.controls.email.errors?.pattern"
+          <span *ngIf="signupForm.controls.email.errors?.email"
             >This field is invalid</span
           >
         </mat-error>
@@ -89,7 +89,7 @@
           (click)="togglePasswordVisibility()"
         >
           <mat-icon>{{
-            passwordVisible ? "visibility_off" : "visibility"
+            passwordVisible ? "visibility" : "visibility_off"
           }}</mat-icon>
         </button>
         <mat-error
@@ -121,7 +121,7 @@
           (click)="toggleConfirmPasswordVisibility()"
         >
           <mat-icon>{{
-            confirmPasswordVisible ? "visibility_off" : "visibility"
+            confirmPasswordVisible ? "visibility" : "visibility_off"
           }}</mat-icon>
         </button>
         <mat-error
@@ -142,6 +142,9 @@
           New password and confirm password do not match
         </mat-hint>
       </mat-form-field>
+      <div *ngIf="SignUpError">
+        <mat-error>Email déjà existant !</mat-error>
+      </div>
     </div>
     <mat-dialog-actions align="end">
       <button

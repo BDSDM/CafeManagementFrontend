@@ -99,7 +99,7 @@ export class UserService {
 
   logout() {
     //localStorage.removeItem('token');
-
+    localStorage.removeItem('lastVisitedUrl');
     localStorage.removeItem('token');
     this.router.navigate(['/home']);
   }
