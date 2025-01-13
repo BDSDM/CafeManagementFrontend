@@ -16,7 +16,7 @@ import { TokenInterceptorService } from './token-interceptor.service';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { UsersmanagementComponent } from './usersmanagement/usersmanagement.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle'; // Import du Slide Toggle
@@ -29,6 +29,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.component';
 import { ConfirmLogoutDialogComponent } from './confirm-logout-dialog/confirm-logout-dialog.component';
 import { MatButtonModule } from '@angular/material/button';
+import { TodolistComponent } from './todolist/todolist.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { MatButtonModule } from '@angular/material/button';
     UpdateComponent,
     ConfirmDeleteComponent,
     ConfirmLogoutDialogComponent,
+    TodolistComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,6 +65,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatSelectModule,
     MatSnackBarModule,
     MatButtonModule,
+    FormsModule,
   ],
   providers: [
     {
