@@ -28,4 +28,22 @@ export class AuthService {
     }
     return null;
   }
+  getUserId(): number {
+    const token = this.getToken();
+    if (!token) {
+      return -1; // Si le token est absent, retourner null
+    }
+
+    try {
+      // Décoder la partie payload
+      const payload = token.split('.')[1];
+      const decodedPayload = JSON.parse(atob(payload));
+
+      // Vérifier que l'ID existe dans le payload
+      return decodedPayload?.id || null;
+    } catch (error) {
+      console.error('Erreur lors du décodage du token:', error);
+      return -1; // En cas d'erreur, retourner null
+    }
+  }
 }

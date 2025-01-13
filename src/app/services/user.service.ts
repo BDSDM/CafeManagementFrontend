@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../user.model';
+import { ToDoList } from '../todolist.model';
 
 @Injectable({
   providedIn: 'root',
@@ -15,8 +16,23 @@ export class UserService {
   private baseUrl = 'http://localhost:8081/user/users';
   private apiUrlStatus = 'http://localhost:8081/user';
   private apiUrlUpdate = 'http://localhost:8081/user/users';
+  private apiUrlToDoList = 'http://localhost:8081/api/todolist';
 
   constructor(private httpClient: HttpClient, private router: Router) {}
+
+  deleteTask(taskId: number): Observable<any> {
+    return this.httpClient.delete<any>(`${this.apiUrlToDoList}/${taskId}`);
+  }
+
+  addTaskForUser(userId: number, task: any): Observable<any> {
+    return this.httpClient.post(`${this.apiUrlToDoList}/user/${userId}`, task);
+  }
+
+  getTasksForUser(userId: number): Observable<ToDoList[]> {
+    return this.httpClient.get<ToDoList[]>(
+      `${this.apiUrlToDoList}/user/${userId}`
+    );
+  }
 
   private accessAuthorizationSource = new BehaviorSubject<boolean>(false);
   accessAuthorization$ = this.accessAuthorizationSource.asObservable();

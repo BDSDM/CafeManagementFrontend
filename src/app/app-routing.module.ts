@@ -6,6 +6,7 @@ import { UserGuard } from './user.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeGuard } from './home.guard';
 import { UsersmanagementComponent } from './usersmanagement/usersmanagement.component';
+import { TodolistComponent } from './todolist/todolist.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
             path: 'usersmanagement',
             component: UsersmanagementComponent,
             canActivate: [AdminGuard], // Vérification des permissions admin pour gérer les utilisateurs
+          },
+          {
+            path: 'todolist', // Nouvelle route pour todolist
+            component: TodolistComponent,
           },
         ],
       },

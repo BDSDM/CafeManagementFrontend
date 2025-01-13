@@ -1,0 +1,88 @@
+.content {
+  min-height: calc(
+    100vh - 80px
+  ); /* Hauteur totale de la fenêtre moins la hauteur du header (80px) */
+  flex: 1; /* Occuper tout l'espace restant */
+  padding: 20px; /* Espacement interne */
+  background-color: #554c4c; /* Couleur de fond pour le contenu */
+  margin-left: 250px; /* Largeur de la sidebar */
+  margin-top: -380px; /* Déplacer la div 100px plus haut */
+  padding-bottom: 100px; /* Ajouter du padding en bas pour éviter le chevauchement avec le footer */
+  overflow-y: auto; /* Permettre le défilement vertical si nécessaire */
+  box-sizing: border-box; /* Inclure le padding dans la hauteur totale */
+}
+
+.task-form {
+  margin-bottom: 20px;
+}
+
+.task-form h2 {
+  color: #007bff;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.btn {
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+}
+
+.todolist-container h2 {
+  color: #28a745;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+}
+
+.task-item {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-details h3 {
+  margin: 0 0 5px;
+}
+
+.task-actions .btn {
+  margin-left: 10px;
+}
+
+.loading,
+.no-tasks {
+  text-align: center;
+  margin-top: 20px;
+  font-style: italic;
+}
+
+.completed {
+  font-weight: bold;
+  color: #28a745;
+}
